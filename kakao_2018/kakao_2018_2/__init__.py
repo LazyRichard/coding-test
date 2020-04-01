@@ -1,6 +1,8 @@
 from typing import List
 import re
 
+BONUS_MAP = { "S": 1, "D": 2, "T": 3 }
+
 def solution(dart_result: str) -> int:
     pattern: str = "(?P<score>[0-9]*)(?P<bonus>S|D|T)(?P<option>\*|\#)?"
 
@@ -8,12 +10,7 @@ def solution(dart_result: str) -> int:
     for i, m in enumerate(re.finditer(pattern, dart_result)):
         local_score = int(m.group("score"))
 
-        if m.group("bonus") == "S":
-            local_score = local_score ** 1
-        elif m.group("bonus") == "D":
-            local_score = local_score ** 2
-        elif m.group("bonus") == "T":
-            local_score = local_score ** 3
+        local_score = local_score ** BONUS_MAP[m.group("bonus")]
 
         if m.group("option") == "*":
             local_score *= 2
