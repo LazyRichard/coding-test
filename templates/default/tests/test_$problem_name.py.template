@@ -1,0 +1,12 @@
+from typing import *
+
+import pytest
+
+from .. import solution
+
+
+@pytest.mark.parametrize("n,expected", [
+    [3, 0]
+])
+def test_solution(n: int, expected: int) -> None:
+    assert solution(n) == expected

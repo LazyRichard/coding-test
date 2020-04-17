@@ -1,0 +1,5 @@
+from typing import *
+
+
+def solution(n: int) -> int:
+    return 0

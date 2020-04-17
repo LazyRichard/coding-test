@@ -1,0 +1,5 @@
+from typing import *
+
+
+def solution() -> None:
+    print("answer")
