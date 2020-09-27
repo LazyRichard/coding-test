@@ -45,15 +45,21 @@ def _iter_dir(path):
             t = Template(child_item.name)
             target_name = t.substitute(problem_name=problem_name)
             target_name = target_name.replace(".template", "")
-            target_file_path = problem_path / target_name
+            target_file_path = (
+                problem_path
+                / child_item.relative_to(templates_dir).parent
+                / target_name
+            )
 
-            with open(child_item, mode="r", encoding="utf-8") as tf_a, \
-                    open(target_file_path, mode="w", encoding="utf-8") as tf_b:
+            with open(child_item, mode="r", encoding="utf-8") as tf_a, open(
+                target_file_path, mode="w", encoding="utf-8"
+            ) as tf_b:
                 for ln in tf_a.readlines():
                     t = Template(ln)
                     tf_b.writelines(t.substitute(problem_name=problem_name))
 
         else:
             shutil.copyfile(child_item, problem_path / path.name / child_item.name)
+
 
 _iter_dir(templates_dir)
