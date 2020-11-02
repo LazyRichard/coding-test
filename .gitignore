@@ -1,8 +1,9 @@
-.vscode
+.vscode/*
+!.vscode/extensions.json
 
-__pycache__
-*_cache
+__pycache__/
+*_cache/
 *.bak*
 
-
-venv
+venv/
+env/
