@@ -4,6 +4,10 @@
 __pycache__/
 *_cache/
 *.bak*
+*.temp*
+*_bak*/
+*_temp*/
+*_tmp*/
 
 venv/
 env/
